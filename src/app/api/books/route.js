@@ -1,7 +1,6 @@
-// src/app/api/books/route.js
 import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/db';
-import Book from '../../../models/books';
+import dbConnect from '@/app/lib/db';
+import Book from '../../models/books';
 
 export async function GET() {
   await dbConnect();
@@ -22,5 +21,3 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Failed to add book' }, { status: 500 });
   }
 }
-
-// Add PUT and DELETE methods as needed

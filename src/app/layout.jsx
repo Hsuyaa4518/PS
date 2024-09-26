@@ -13,14 +13,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="bg-blue-500 p-4">
-          <ul className="flex space-x-4">
-            <li><a href="/" className="text-white">Home</a></li>
-            <li><a href="/books" className="text-white">Books</a></li>
-            <li><a href="/login" className="text-white">Login</a></li>
-            <li><a href="/register" className="text-white">Register</a></li>
-          </ul>
-        </nav>
+      <nav className="bg-gradient-to-r from-blue-500 to-purple-600 p-4">
+      <ul className="flex space-x-4">
+        <li>
+          <a href="/" className="text-white hover:underline">Home</a>
+        </li>
+        <li>
+          <a href="/books" className="text-white hover:underline">Books</a>
+        </li>
+        <li>
+          <a href="/login" className="text-white hover:underline">Login</a>
+        </li>
+        <li>
+          <a href="/register" className="text-white hover:underline">Register</a>
+        </li>
+      </ul>
+    </nav>
         {children}
       </body>
     </html>

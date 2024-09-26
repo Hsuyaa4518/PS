@@ -1,7 +1,7 @@
 // src/app/api/books/[id]/route.js
 import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/db';
-import Book from '@/models/Book';
+import dbConnect from '@/app/lib/db';
+import Book from '../../../models/books';
 
 export async function GET(request, { params }) {
   await dbConnect();

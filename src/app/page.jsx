@@ -1,4 +1,3 @@
-// src/app/page.js
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-10 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
@@ -11,14 +10,14 @@ export default function Home() {
             <a href="/register">Browse Books</a>
           </button>
           <button className="bg-white text-purple-500 px-6 py-3 rounded-lg shadow-lg hover:bg-purple-100 font-semibold transition">
-            Manage Library
+            <a href="/admin">Manage Library</a>
           </button>
         </div>
       </div>
 
       <div className="mt-20 w-full flex justify-center items-center">
         <img
-          src="/images/library-hero.svg" // Placeholder image, replace with your own
+          src="/images/library-hero.svg"
           alt="Library Illustration"
           className="w-2/3 max-w-lg"
         />
