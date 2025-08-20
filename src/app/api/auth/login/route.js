@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next.js/server';
 import dbConnect from '../../../lib/db';
 import User from '../../../models/User';
 import jwt from 'jsonwebtoken';
@@ -7,6 +7,7 @@ export async function POST(request) {
   await dbConnect();
 
   const { email, password } = await request.json();
+  const secret = process.env.JWT_SECRET || 'thisisthesecrettoken';
 
   try {
     const user = await User.findOne({ email });
@@ -14,9 +15,19 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
 
-    const token = jwt.sign({ userId: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    return NextResponse.json({ token, userId: user._id, isAdmin: user.isAdmin });
+    const token = jwt.sign(
+      { userId: user._id, isAdmin: user.isAdmin }, 
+      secret, // Use the same secret variable consistently
+      { expiresIn: '24h' }
+    );
+    
+    return NextResponse.json({ 
+      token, 
+      userId: user._id, 
+      isAdmin: user.isAdmin 
+    });
   } catch (error) {
+    console.error('Login error:', error);
     return NextResponse.json({ error: 'Login failed' }, { status: 500 });
   }
 }

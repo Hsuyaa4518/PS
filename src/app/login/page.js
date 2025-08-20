@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { navigate } from 'next/navigation';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -21,6 +22,7 @@ export default function Login() {
       router.push('/');
     } else {
       alert('Login failed');
+      router.push('/books')
     }
   };
 

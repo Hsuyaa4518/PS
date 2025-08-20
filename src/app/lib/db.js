@@ -18,10 +18,7 @@ async function dbConnect() {
   }
 
   try {
-    const connection = await mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const connection = await mongoose.connect(MONGODB_URI);
     cached.connection = connection;
   } catch (error) {
     console.error('Database connection error:', error);
